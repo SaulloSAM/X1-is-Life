@@ -3,6 +3,8 @@ package saulosinesio.x1_islife;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import saulosinesio.x1_islife.classes.Singleton;
 import saulosinesio.x1_islife.fragmentos.Batalha;
@@ -10,13 +12,17 @@ import saulosinesio.x1_islife.fragmentos.DadosDosJogadores;
 
 public class Main extends AppCompatActivity {
 
+    // Criando Shared Preferences
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        // Criando Shared Preferences
-        SharedPreferences sharedPreferences = getSharedPreferences("jogadoresMTG", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("jogadoresMTG", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
         // Verificando se já existe jogadores no APP.
         String temJodadore01 = sharedPreferences.getString("jogador01", null);
@@ -38,5 +44,29 @@ public class Main extends AppCompatActivity {
             DadosDosJogadores fragmento = new DadosDosJogadores();
             getSupportFragmentManager().beginTransaction().replace(R.id.frameMain, fragmento).commit();
         }
+    }
+
+    public boolean onCreateOptionsMenu (Menu menu){
+        getMenuInflater().inflate(R.menu.mini_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        if(id == R.id.acao_deletar){
+            // Salvando Jogadores.
+            editor.putString("jogador01", null);
+            editor.putString("jogador02", null);
+            editor.putInt("placar01", 0);
+            editor.putInt("placar02", 0);
+            editor.apply();
+
+            DadosDosJogadores fragmento = new DadosDosJogadores();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameMain, fragmento).commit();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

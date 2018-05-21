@@ -1,5 +1,6 @@
 package saulosinesio.x1_islife.fragmentos;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -7,15 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import saulosinesio.x1_islife.R;
 import saulosinesio.x1_islife.classes.Singleton;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class Batalha extends Fragment {
 
-    private TextView tvJ1, tvJ2, tvV1, tvV2;
+    private TextView tvJ1, tvJ2, tvV1, tvV2, tvPlacarJ1, tvPlacarJ2, tvPlacarV1, tvPlacarV2;
     private Button btnVitoria, btnDerrota, btnMaisJ1, btnMenosJ1, btnMais5J1, btnMenos5J1, btnMaisJ2, btnMenosJ2, btnMais5J2, btnMenos5J2;
+    private int placar01, placar02;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -24,11 +29,24 @@ public class Batalha extends Fragment {
         // Binding XML
         binding(view);
 
+        // Criando Shared Preferences.
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("jogadoresMTG", MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        placar01 = sharedPreferences.getInt("placar01", 0);
+        placar02 = sharedPreferences.getInt("placar02", 0);
+
         // Iniciando Batalha
         tvJ1.setText(Singleton.getInstance().jogador01.getJogador());
+        tvPlacarJ1.setText(Singleton.getInstance().jogador01.getJogador());
         tvV1.setText("20");
+        tvPlacarV1.setText(Integer.toString(placar01));
+
+
         tvJ2.setText(Singleton.getInstance().jogador02.getJogador());
+        tvPlacarJ2.setText(Singleton.getInstance().jogador02.getJogador());
         tvV2.setText("20");
+        tvPlacarV2.setText(Integer.toString(placar02));
 
         // Ações dos Botões
         View.OnClickListener listener = new View.OnClickListener() {
@@ -38,22 +56,47 @@ public class Batalha extends Fragment {
             }
         };
 
+        View.OnClickListener vitoria = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                placar01 += 1;
+                editor.putInt("placar01", placar01);
+                editor.apply();
+                tvPlacarV1.setText(Integer.toString(placar01));
+                tvV1.setText(Integer.toString(20));
+                tvV2.setText(Integer.toString(20));
+                return;
+            }
+        };
+
+        View.OnClickListener derrota = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                placar02 += 1;
+                editor.putInt("placar02", placar02);
+                editor.apply();
+                tvPlacarV2.setText(Integer.toString(placar02));
+                tvV1.setText(Integer.toString(20));
+                tvV2.setText(Integer.toString(20));
+                return;
+            }
+        };
+
         // Listener Botão Ação
-        btnVitoria.setOnClickListener(listener);
-        btnDerrota.setOnClickListener(listener);
+        btnVitoria.setOnClickListener(vitoria);
+        btnDerrota.setOnClickListener(derrota);
 
         // Listener Jogador
         btnMaisJ1.setOnClickListener(listener);
-        btnMenos5J1.setOnClickListener(listener);
+        btnMais5J1.setOnClickListener(listener);
         btnMenosJ1.setOnClickListener(listener);
-        btnMaisJ1.setOnClickListener(listener);
+        btnMenos5J1.setOnClickListener(listener);
 
         // Listener Adversário
         btnMaisJ2.setOnClickListener(listener);
-        btnMenos5J2.setOnClickListener(listener);
+        btnMais5J2.setOnClickListener(listener);
         btnMenosJ2.setOnClickListener(listener);
-        btnMaisJ2.setOnClickListener(listener);
-
+        btnMenos5J2.setOnClickListener(listener);
         return view;
     }
 
@@ -111,7 +154,6 @@ public class Batalha extends Fragment {
             tvV2.setText(Integer.toString( vidaAtual - 5 ));
             return;
         }
-
     }
 
     /**
@@ -126,6 +168,8 @@ public class Batalha extends Fragment {
         // Jogador
         tvJ1 = view.findViewById(R.id.tvJ1);
         tvV1 = view.findViewById(R.id.tvV1);
+        tvPlacarJ1 = view.findViewById(R.id.tvPlacarJ1);
+        tvPlacarV1 = view.findViewById(R.id.tvPlacarV1);
         btnMaisJ1 = view.findViewById(R.id.btnMaisJ1);
         btnMais5J1 = view.findViewById(R.id.btnMais5J1);
         btnMenosJ1 = view.findViewById(R.id.btnMenosJ1);
@@ -134,6 +178,8 @@ public class Batalha extends Fragment {
         // Adversário
         tvJ2 = view.findViewById(R.id.tvJ2);
         tvV2 = view.findViewById(R.id.tvV2);
+        tvPlacarJ2 = view.findViewById(R.id.tvPlacarJ2);
+        tvPlacarV2 = view.findViewById(R.id.tvPlacarV2);
         btnMaisJ2 = view.findViewById(R.id.btnMaisJ2);
         btnMais5J2 = view.findViewById(R.id.btnMais5J2);
         btnMenosJ2 = view.findViewById(R.id.btnMenosJ2);

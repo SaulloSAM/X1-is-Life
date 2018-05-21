@@ -34,7 +34,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="75sp"
-        app:layout_constraintEnd_toStartOf="@+id/btnMaisJ1"
+        app:layout_constraintEnd_toStartOf="@+id/btnMenosJ1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvJ1" />
 
@@ -63,7 +63,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="75sp"
-        app:layout_constraintEnd_toStartOf="@+id/btnMaisJ2"
+        app:layout_constraintEnd_toStartOf="@+id/btnMenosJ2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvJ2" />
 
@@ -100,7 +100,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="+"
-        app:layout_constraintEnd_toStartOf="@+id/btnMenosJ1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvJ1" />
 
     <Button
@@ -110,7 +110,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="-"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnMaisJ1"
         app:layout_constraintTop_toBottomOf="@+id/tvJ1" />
 
     <Button
@@ -120,7 +120,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="+5"
-        app:layout_constraintEnd_toStartOf="@+id/btnMenos5J1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMaisJ1" />
 
     <Button
@@ -130,7 +130,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="-5"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnMais5J1"
         app:layout_constraintTop_toBottomOf="@+id/btnMenosJ1" />
 
     <Button
@@ -140,7 +140,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="+"
-        app:layout_constraintEnd_toStartOf="@+id/btnMenosJ2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvJ2" />
 
     <Button
@@ -150,7 +150,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="+5"
-        app:layout_constraintEnd_toStartOf="@+id/btnMenos5J2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMaisJ2" />
 
     <Button
@@ -160,7 +160,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="-"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnMaisJ2"
         app:layout_constraintTop_toBottomOf="@+id/tvJ2" />
 
     <Button
@@ -170,7 +170,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="-5"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnMais5J2"
         app:layout_constraintTop_toBottomOf="@+id/btnMenosJ2" />
 
     <TextView
@@ -179,33 +179,34 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:text="Placar"
         android:textAlignment="center"
+        android:textColor="#FF0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="437dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvV2" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tvPlacarJ1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Jogador"
         android:textAlignment="textEnd"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        tools:layout_editor_absoluteX="92dp" />
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@+id/tvPlacarV1"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tvPlacarV1"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="000"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toStartOf="@+id/textView8"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
@@ -213,29 +214,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="X"
-        app:layout_constraintEnd_toStartOf="@+id/textView9"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tvPlacarV2"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="000"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
-        tools:layout_editor_absoluteY="464dp" />
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/tvPlacarJ2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Adversário"
         android:textAlignment="textStart"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        tools:layout_editor_absoluteX="280dp" />
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toEndOf="@+id/tvPlacarV2"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 </android.support.constraint.ConstraintLayout>
