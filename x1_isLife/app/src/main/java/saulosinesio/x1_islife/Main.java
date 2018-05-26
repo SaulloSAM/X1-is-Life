@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import saulosinesio.x1_islife.classes.Singleton;
 import saulosinesio.x1_islife.fragmentos.Batalha;
@@ -20,6 +21,9 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        // Manter a tela ligada.
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         sharedPreferences = getSharedPreferences("jogadoresMTG", MODE_PRIVATE);
         editor = sharedPreferences.edit();
