@@ -1,7 +1,6 @@
 package saulosinesio.x1_islife.fragmentos;
 
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,6 +20,8 @@ public class DadosDosJogadores extends Fragment {
 
     private EditText etJogador01, etJogador02;
     private Button btnRegistrar;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

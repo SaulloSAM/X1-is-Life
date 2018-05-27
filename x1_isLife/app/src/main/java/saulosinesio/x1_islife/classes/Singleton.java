@@ -7,6 +7,7 @@ public class Singleton {
 
     public Jogadores jogador01 = new Jogadores();
     public Jogadores jogador02 = new Jogadores();
+    public Jogadores jogador03 = new Jogadores();
 
     public static Singleton getInstance () {
         return INSTANCE;
