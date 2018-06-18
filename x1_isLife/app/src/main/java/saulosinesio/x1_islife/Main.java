@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import saulosinesio.x1_islife.classes.Singleton;
 import saulosinesio.x1_islife.fragmentos.Batalha;
+import saulosinesio.x1_islife.fragmentos.Configuracao;
 import saulosinesio.x1_islife.fragmentos.DadosDoUsuario;
 import saulosinesio.x1_islife.fragmentos.DadosDosJogadores;
 
@@ -55,14 +56,20 @@ public class Main extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.acao_deletar){
+            Configuracao frag = new Configuracao();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameMain, frag).commit();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     public void iniciandoSinglenton () {
         // Pegando Dados dos Adiversários.
+        String planeswlaker = sharedPreferences.getString("planeswlaker", "Jogador");
+        int placar01_P = sharedPreferences.getInt("placar01_p", 0);
+        int placar02_P = sharedPreferences.getInt("placar02_p", 0);
+        int placar03_P = sharedPreferences.getInt("placar03_p", 0);
+
         String adversario01 = sharedPreferences.getString("jogador01", "Adversário 01");
         int placar01 = sharedPreferences.getInt("placar01", 0);
 
@@ -73,6 +80,11 @@ public class Main extends AppCompatActivity {
         int placar03 = sharedPreferences.getInt("placar03", 0);
 
         // Criando Singleton.
+        Singleton.getInstance().planeswlaker.setJogador(planeswlaker);
+        Singleton.getInstance().planeswlaker.setPlacar(placar01_P);
+        Singleton.getInstance().planeswlaker.setPlacar02(placar02_P);
+        Singleton.getInstance().planeswlaker.setPlacar03(placar03_P);
+
         Singleton.getInstance().jogador01.setJogador(adversario01);
         Singleton.getInstance().jogador01.setPlacar(placar01);
 

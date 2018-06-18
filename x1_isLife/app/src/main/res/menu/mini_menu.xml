@@ -4,11 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/acao_deletar"
-        android:title="Deletar Tudo"
-        android:icon="@android:drawable/ic_menu_delete"
-        app:showAsAction="ifRoom"
-        >
-    </item>
+        android:id="@+id/acao_configuracaio"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="Configuração"
+        app:showAsAction="ifRoom"></item>
 
 </menu>
